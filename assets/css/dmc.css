@@ -234,7 +234,7 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 600px) { .svc-grid { grid-template-columns: 1fr; } }
 
 .svc { display: block; background: none; }
-.svc__media { position: relative; overflow: hidden; aspect-ratio: 3 / 2; background: var(--mortar); }
+.svc__media { display: block; position: relative; overflow: hidden; aspect-ratio: 3 / 2; background: var(--mortar); }
 .svc__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease); }
 .svc:hover .svc__media img { transform: scale(1.055); }
 .svc__title { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 1.1rem 0 .4rem; transition: transform 420ms var(--ease); }
@@ -356,7 +356,7 @@ body.lb-open { overflow: hidden; }
 .srow + .srow { margin-top: var(--section); }
 .srow--rev .srow__media { order: 2; }
 @media (max-width: 900px) { .srow, .srow--rev { grid-template-columns: 1fr; } .srow--rev .srow__media { order: 0; } }
-.srow__media { overflow: hidden; aspect-ratio: 4 / 3; background: var(--mortar); }
+.srow__media { display: block; overflow: hidden; aspect-ratio: 4 / 3; background: var(--mortar); }
 .srow__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease); }
 .srow__media:hover img { transform: scale(1.03); }
 
@@ -457,10 +457,10 @@ body.lb-open { overflow: hidden; }
 .ftr__by:hover { opacity: .72; }
 
 /* ---------- 20. SCROLL REVEAL ---------- */
-[data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity var(--slow) var(--ease), transform var(--slow) var(--ease); }
-[data-reveal].is-in { opacity: 1; transform: none; }
-[data-reveal-mask] { clip-path: inset(0 100% 0 0); transition: clip-path 1100ms var(--ease); }
-[data-reveal-mask].is-in { clip-path: inset(0 0 0 0); }
+.js [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity var(--slow) var(--ease), transform var(--slow) var(--ease); }
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+.js [data-reveal-mask] { clip-path: inset(0 100% 0 0); transition: clip-path 1100ms var(--ease); }
+.js [data-reveal-mask].is-in { clip-path: inset(0 0 0 0); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
