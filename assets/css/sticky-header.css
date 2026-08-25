@@ -1,0 +1,30 @@
+/* ==========================================================================
+   Dan Milbourn Construction - sticky header
+   Keeps the navigation and the phone/email bar pinned to the top on scroll.
+   position:sticky keeps both in normal flow, so nothing below shifts.
+   ========================================================================== */
+
+.dmc-sticky-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  width: 100%;
+}
+
+/* the theme gives .unite-header z-index:12 and a white background,
+   which is what makes it safe to pin over page content */
+.dmc-sticky-header .unite-header { position: relative; }
+
+/* keep the contact bar readable and compact while pinned */
+.dmc-sticky-header #text-banner .container { padding: .6em 1em; }
+.dmc-sticky-header #text-banner .container h2 { margin: 0; }
+.dmc-sticky-header #text-banner a { color: #ffffff; text-decoration: none; }
+.dmc-sticky-header #text-banner a:hover { text-decoration: underline; }
+
+/* trim the pinned header on small screens so it eats less of the viewport */
+@media screen and (max-width: 767px) {
+  .dmc-sticky-header .unite-header { padding: 10px 20px; }
+  .dmc-sticky-header #text-banner .container { padding: .5em .75em; }
+  .dmc-sticky-header #text-banner .container h2 { font-size: .85em; }
+}

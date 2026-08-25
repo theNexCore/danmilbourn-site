@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Dan Milbourn Construction - "Get Estimate" tile on the services page.
+   Sits in the empty services cell and matches the 16:9 footprint of the
+   surrounding 1280x720 service photos.
+   ========================================================================== */
+
+.dmc-estimate-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 18px;
+  background: #f4f4f4;
+  border: 1px solid #dcdcdc;
+  text-decoration: none;
+  transition: background .15s ease, border-color .15s ease;
+}
+.dmc-estimate-tile:hover,
+.dmc-estimate-tile:focus-visible { background: #efefef; border-color: #9f2214; }
+.dmc-estimate-tile:focus-visible { outline: 3px solid #9f2214; outline-offset: 3px; }
+
+.dmc-estimate-tile__logo {
+  display: block;
+  width: min(70%, 290px);
+  height: auto;
+  max-height: 45%;
+  object-fit: contain;
+}
+
+.dmc-estimate-tile__cta {
+  display: inline-block;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #9f2214;
+  padding: 13px 30px;
+  border-radius: 3px;
+  transition: background .15s ease;
+}
+.dmc-estimate-tile:hover .dmc-estimate-tile__cta { background: #7f1b10; }
+
+@media screen and (max-width: 767px) {
+  .dmc-estimate-tile { gap: 14px; padding: 14px; }
+  .dmc-estimate-tile__cta { font-size: 12px; padding: 10px 20px; }
+}
