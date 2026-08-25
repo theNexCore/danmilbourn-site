@@ -314,6 +314,12 @@ p:last-child { margin-bottom: 0; }
 .quote__who { margin: 1.6rem 0 0; flex: 0 0 auto; font-size: .8125rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
 .section--dark .quote__who { color: var(--stone); }
 .quotes__nav { display: flex; align-items: center; justify-content: center; gap: .75rem; margin-top: 1.75rem; }
+/* paired arrows are SVG so left and right are exact mirrors */
+.ico-arrow {
+  width: 20px; height: 20px; display: block;
+  fill: none; stroke: currentColor; stroke-width: 1.6;
+  stroke-linecap: round; stroke-linejoin: round;
+}
 .qbtn { width: 48px; height: 48px; border: 1px solid var(--rule); background: none; cursor: pointer; display: grid; place-items: center; transition: background 260ms var(--ease), border-color 260ms; }
 .section--dark .qbtn { border-color: var(--rule-invert); }
 .qbtn:hover { background: var(--brick); border-color: var(--brick); color: var(--white); }
