@@ -288,7 +288,9 @@ p:last-child { margin-bottom: 0; }
 /* each card is a column: fixed-ratio media, then text that fills the rest,
    so every card in the row starts and ends at the same height */
 .fcard { display: flex; flex-direction: column; height: 100%; }
-.fcard .pmedia { aspect-ratio: 4 / 3; width: 100%; flex: 0 0 auto; }
+/* All three project photographs are exactly 2.4:1 (1440x600 and 1920x800), so a
+   12/5 box keeps every card identical while cropping nothing at all. */
+.fcard .pmedia { aspect-ratio: 12 / 5; width: 100%; flex: 0 0 auto; }
 .fcard .pmedia img { width: 100%; height: 100%; object-fit: cover; }
 .fcard__body { display: flex; flex-direction: column; flex: 1 1 auto; padding-top: 1.1rem; }
 .fcard__num { font-family: var(--font-head); font-size: 1.5rem; line-height: 1; color: var(--brick); opacity: .32; margin: 0 0 .45rem; }
