@@ -1,0 +1,134 @@
+/* ==========================================================================
+   Dan Milbourn Construction - contact form (Formspree)
+   Self-contained, scoped under .dmc-contact so it cannot collide with the
+   Weebly theme. Palette matches the site: charcoal #2e2d2d, rust #9f2214.
+   ========================================================================== */
+
+.dmc-contact,
+.dmc-contact * { box-sizing: border-box; }
+
+.dmc-contact {
+  background: #f4f4f4;
+  padding: 56px 20px 64px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #2e2d2d;
+}
+
+.dmc-contact__inner { max-width: 760px; margin: 0 auto; }
+
+.dmc-contact__title {
+  font-family: "Josefin Sans", "Montserrat", Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #2e2d2d;
+  margin: 0 0 10px;
+  text-align: center;
+}
+.dmc-contact__intro {
+  margin: 0 auto 32px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 52ch;
+  color: #55595c;
+}
+.dmc-contact__intro a { color: #9f2214; font-weight: 600; text-decoration: none; }
+.dmc-contact__intro a:hover { text-decoration: underline; }
+
+/* --- layout --- */
+.dmc-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.dmc-field { display: flex; flex-direction: column; }
+.dmc-field--full { grid-column: 1 / -1; }
+
+.dmc-field label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #2e2d2d;
+  margin-bottom: 7px;
+}
+.dmc-field .req { color: #9f2214; }
+
+.dmc-field input,
+.dmc-field select,
+.dmc-field textarea {
+  font: inherit;
+  font-size: 15px;
+  color: #2e2d2d;
+  background: #ffffff;
+  border: 1px solid #d2d4d6;
+  border-radius: 3px;
+  padding: 12px 13px;
+  width: 100%;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.dmc-field textarea { min-height: 150px; resize: vertical; }
+
+.dmc-field input:focus,
+.dmc-field select:focus,
+.dmc-field textarea:focus {
+  outline: none;
+  border-color: #9f2214;
+  box-shadow: 0 0 0 3px rgba(159,34,20,.15);
+}
+.dmc-field input[aria-invalid="true"],
+.dmc-field textarea[aria-invalid="true"] { border-color: #DD5857; background: #fff8f8; }
+
+.dmc-error { color: #b3261e; font-size: 13px; margin-top: 6px; min-height: 1px; }
+
+/* honeypot - hidden from humans, visible to bots */
+.dmc-hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px; height: 1px; overflow: hidden;
+}
+
+/* --- actions --- */
+.dmc-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.dmc-btn {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #9f2214;
+  border: 0;
+  border-radius: 3px;
+  padding: 15px 38px;
+  cursor: pointer;
+  transition: background .15s ease, opacity .15s ease;
+}
+.dmc-btn:hover { background: #7f1b10; }
+.dmc-btn:focus-visible { outline: 3px solid #2e2d2d; outline-offset: 2px; }
+.dmc-btn[disabled] { opacity: .6; cursor: default; }
+.dmc-required-note { font-size: 13px; color: #7b7f82; }
+
+/* --- form-level messages --- */
+.dmc-alert {
+  grid-column: 1 / -1;
+  border-radius: 3px;
+  padding: 14px 16px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.dmc-alert:empty { display: none; }
+.dmc-alert--success { background: #e7f4ea; border: 1px solid #b7ddc1; color: #1c5f2c; }
+.dmc-alert--error   { background: #fdecec; border: 1px solid #f3c0c0; color: #b3261e; }
+
+@media screen and (max-width: 640px) {
+  .dmc-contact { padding: 40px 18px 46px; }
+  .dmc-contact__title { font-size: 24px; }
+  .dmc-form { grid-template-columns: 1fr; gap: 16px; }
+  .dmc-btn { width: 100%; }
+}
