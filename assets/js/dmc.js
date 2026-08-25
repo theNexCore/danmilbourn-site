@@ -59,6 +59,8 @@
     if (reduced || !('IntersectionObserver' in window)) {
       Array.prototype.forEach.call(revealables, function (el) { el.classList.add('is-in'); });
     } else {
+      // threshold 0 + a generous margin: reveal as soon as anything approaches the
+      // viewport, so fast scrolling can never skip an element and leave it invisible.
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           if (!en.isIntersecting) return;
@@ -67,8 +69,18 @@
           setTimeout(function () { el.classList.add('is-in'); }, delay);
           io.unobserve(el);
         });
-      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+      }, { rootMargin: '300px 0px 300px 0px', threshold: 0 });
       Array.prototype.forEach.call(revealables, function (el) { io.observe(el); });
+
+      // Failsafe. Content must never stay hidden because an observer missed it:
+      // anything still unrevealed shortly after load is shown unconditionally.
+      var failsafe = function () {
+        Array.prototype.forEach.call(revealables, function (el) {
+          if (!el.classList.contains('is-in')) { el.classList.add('is-in'); io.unobserve(el); }
+        });
+      };
+      window.addEventListener('load', function () { setTimeout(failsafe, 2500); });
+      setTimeout(failsafe, 6000);
     }
   }
 
