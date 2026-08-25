@@ -379,17 +379,21 @@ body.lb-open { overflow: hidden; }
 .tl__item p { color: var(--text-muted); font-size: .9375rem; margin: 0; }
 
 /* ---------- 16. TEAM ---------- */
-.team { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2vw, 1.75rem); }
-@media (max-width: 900px) { .team { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 520px) { .team { grid-template-columns: 1fr; } }
-.team__m:nth-child(even) { margin-top: clamp(1rem, 3vw, 2.75rem); }
-@media (max-width: 520px) { .team__m:nth-child(even) { margin-top: 0; } }
-.team__ph { aspect-ratio: 4 / 5; background: var(--mortar); overflow: hidden; display: grid; place-items: center; }
-.team__ph img { width: 100%; height: 100%; object-fit: cover; }
-.team__ph--empty { border: 1px solid var(--rule); background: #E7E3DA; }
-.team__ph--empty span { font-family: var(--font-head); font-size: 2.25rem; color: var(--stone); letter-spacing: .05em; }
-.team__m h3 { font-size: 1.125rem; margin-top: .9rem; }
-.team__m p { font-size: .8125rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); margin: .2rem 0 0; }
+.team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); }
+@media (max-width: 760px) { .team { grid-template-columns: 1fr; } }
+.team__m {
+  padding: clamp(1.75rem, 3.5vw, 2.75rem) clamp(1.25rem, 2.5vw, 2rem);
+  border-bottom: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+}
+.team__m:last-child { border-right: 0; }
+@media (max-width: 760px) { .team__m { border-right: 0; padding-left: 0; padding-right: 0; } }
+.team__role {
+  font-family: var(--font-head); font-size: .6875rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--brick);
+  margin: 0 0 .65rem;
+}
+.team__m h3 { font-size: clamp(1.25rem, 2.1vw, 1.625rem); margin: 0; }
 
 /* ---------- 17. COMMITMENTS ---------- */
 .commit { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--rule-invert); }
