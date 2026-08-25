@@ -150,6 +150,33 @@ p:last-child { margin-bottom: 0; }
 }
 .nav a:hover::after, .nav a[aria-current="page"]::after { right: 0; }
 
+/* Phone and email ride the same transition as the header background: hidden
+   while the header sits transparent over the hero, revealed as it goes solid. */
+.hdr__contact {
+  display: flex; align-items: center; gap: clamp(.9rem, 1.6vw, 1.6rem);
+  margin-left: auto;
+  opacity: 0; transform: translateY(-6px); pointer-events: none;
+  transition: opacity 380ms var(--ease), transform 380ms var(--ease);
+}
+.hdr--solid .hdr__contact { opacity: 1; transform: none; pointer-events: auto; }
+/* on pages with no hero the header is solid immediately, so show them at once */
+.hdr:not(.hdr--onhero) .hdr__contact { opacity: 1; transform: none; pointer-events: auto; }
+
+.hdr__contact a {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: .8125rem; font-weight: 500; color: var(--text);
+  white-space: nowrap; transition: color 200ms var(--ease);
+}
+.hdr__contact a:hover { color: var(--brick); }
+.hdr__contact svg { width: 15px; height: 15px; fill: var(--brick); flex: 0 0 15px; }
+
+/* Shed the email label, then the email, then the block itself — the last step
+   lands at 1023px where the desktop nav gives way to the drawer, which carries
+   phone and email of its own, so there is no width without them. */
+@media (max-width: 1400px) { .hdr__contact a:last-child span { display: none; } }
+@media (max-width: 1300px) { .hdr__contact a:last-child { display: none; } }
+@media (max-width: 1023px) { .hdr__contact { display: none; } }
+
 .hdr__cta { white-space: nowrap; padding: .8125rem 1.4rem; min-height: 44px; font-size: .75rem; }
 
 .hdr__burger {
