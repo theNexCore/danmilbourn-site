@@ -348,6 +348,26 @@ p:last-child { margin-bottom: 0; }
 .ba--placeholder { display: grid; place-items: center; text-align: center; padding: 2rem; color: var(--text-muted); }
 .ba--placeholder .ba__note { font-family: var(--font-head); letter-spacing: .12em; text-transform: uppercase; font-size: .8125rem; }
 
+/* ---------- 11b. REVIEW GRID (About) ----------
+   A real grid rather than masonry columns: cards on the same row stretch to a
+   shared height, so the rows read straight. Rows still size to their own
+   content, so no review is ever truncated to force a match. */
+.rgrid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+  list-style: none; margin: 0; padding: 0;
+}
+@media (max-width: 980px) { .rgrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .rgrid { grid-template-columns: 1fr; } }
+.rgrid > li {
+  display: flex; flex-direction: column;
+  background: var(--white); border: 1px solid var(--rule);
+  padding: clamp(1.4rem, 2.2vw, 1.75rem);
+}
+.rgrid .quote__stars { margin: 0 0 .75rem; font-size: .9rem; flex: 0 0 auto; }
+.rgrid__text { font-size: .9375rem; line-height: 1.62; margin: 0; flex: 1 1 auto; }
+.rgrid .quote__who { margin: 1.1rem 0 0; font-size: .75rem; flex: 0 0 auto; }
+
 /* ---------- 12. MASONRY GRID (notable work) ---------- */
 .mgrid { columns: 3; column-gap: clamp(1rem, 1.8vw, 1.5rem); }
 @media (max-width: 900px) { .mgrid { columns: 2; } }
