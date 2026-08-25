@@ -296,7 +296,13 @@ p:last-child { margin-bottom: 0; }
 .section--dark .quotes__count { color: var(--stone); }
 
 /* ---------- 11. BEFORE / AFTER SLIDER ---------- */
-.ba { position: relative; overflow: hidden; aspect-ratio: 3 / 2; background: var(--mortar); user-select: none; touch-action: pan-y; }
+/* slider + story side by side on desktop, stacked on mobile */
+.ba-row { display: grid; grid-template-columns: 52% 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.ba-row + .ba-row { margin-top: var(--section); }
+@media (max-width: 860px) { .ba-row { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+/* source photographs are square, so the frame is square — nothing is cropped away */
+.ba { position: relative; overflow: hidden; aspect-ratio: 1 / 1; background: var(--mortar); user-select: none; touch-action: pan-y; }
 .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .ba__after { clip-path: inset(0 0 0 var(--pos, 50%)); }
 .ba__divider { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 2px; background: var(--white); transform: translateX(-1px); pointer-events: none; box-shadow: 0 0 12px rgba(0,0,0,.35); }
